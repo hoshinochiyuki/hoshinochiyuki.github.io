@@ -54,7 +54,7 @@ export const FirstPage = () => {
       isHit && setHasHit(true);
 
       setInterval(() => {
-        const random = sample([0, 1, 2, 3, 4, 5, 6]) || 0;
+        const random = sample([0, 1, 2, 3, 4, 5, 6, 7]) || 0;
         setLanguage(
           [
             '啥子哦',
@@ -64,6 +64,7 @@ export const FirstPage = () => {
             '说道痛处就气急败坏，说到底还不是条懒狗',
             'NMSL',
             '李少杰是sb',
+            '废物东西',
           ][random],
         );
       }, 2000);
