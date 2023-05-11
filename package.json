@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://hoshinochiyuki.github.io",
   "dependencies": {
+    "@pixi/react": "^7.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,11 +12,25 @@
     "@types/node": "^16.18.28",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "@types/lodash": "^4.14.182",
+    "lodash": "^4.17.21",
+    "pixi.js": "^7.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-i18n": "^2.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "gh-pages": "^5.0.0",
+    "prettier": "^2.0.5",
+    "react-use": "^15.3.3",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,7 +57,10 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "gh-pages": "^5.0.0"
+  "lint-staged": {
+    "**/*.tsx": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
