@@ -1,10 +1,8 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import FirstPage from "./Page/FirstPage/FirstPage";
-import SecondPage from "./Page/SecondPage/SecondPage";
 
-function App() {
+const SecondPage = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -21,10 +19,8 @@ function App() {
           Learn React
         </a>
       </header>
-      <FirstPage />
-      <SecondPage />
     </div>
   );
-}
+};
 
-export default App;
+export default SecondPage;
