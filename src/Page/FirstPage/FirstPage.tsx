@@ -6,13 +6,14 @@ import useKeyClick from './useKeyClick/useKeyClick';
 import { v4 } from 'uuid';
 import { useHitCheck } from './useHitCheck/useHitCheck';
 import { sample } from 'lodash';
+import Bullets from './Bullets/Bullets';
 
 const speed = 7;
 
 export const FirstPage = () => {
   const initKeys = useMemo(() => {
     const keys: { [x: string]: { press?: () => void; release?: () => void } } = {};
-    ['a', 'd', 's', 'w'].forEach((key) => {
+    ['a', 'd', 's', 'w', ' '].forEach((key) => {
       keys[key] = { press: () => handleMoveClick(key) };
     });
     return keys;
@@ -27,25 +28,30 @@ export const FirstPage = () => {
 
   const catRef = useRef<SpriteProps>(null);
   const targetRef = useRef<SpriteProps>(null);
+  const bulletRef = useRef<{ handleAddBullet: () => void }>(null);
 
   const { isHit, vx, vy } = useHitCheck({ leader: catRef.current, target: targetRef.current });
 
   const handleMoveClick = (key: string) => {
-    setCatPosition((tempPosition) => {
-      if (key === 'a') {
-        tempPosition[0] = tempPosition[0] - speed;
-      }
-      if (key === 'd') {
-        tempPosition[0] = tempPosition[0] + speed;
-      }
-      if (key === 'w') {
-        tempPosition[1] = tempPosition[1] - speed;
-      }
-      if (key === 's') {
-        tempPosition[1] = tempPosition[1] + speed;
-      }
-      return tempPosition;
-    });
+    if (key === ' ') {
+      bulletRef.current?.handleAddBullet();
+    } else {
+      setCatPosition((tempPosition) => {
+        if (key === 'a') {
+          tempPosition[0] = tempPosition[0] - speed;
+        }
+        if (key === 'd') {
+          tempPosition[0] = tempPosition[0] + speed;
+        }
+        if (key === 'w') {
+          tempPosition[1] = tempPosition[1] - speed;
+        }
+        if (key === 's') {
+          tempPosition[1] = tempPosition[1] + speed;
+        }
+        return tempPosition;
+      });
+    }
     setRefresh(v4());
   };
 
@@ -79,6 +85,7 @@ export const FirstPage = () => {
   return (
     <>
       <Container>
+        <Bullets catX={catPosition[0]} catY={catPosition[1]} cRef={bulletRef} />
         <Container>
           {hasHit && (
             <Text

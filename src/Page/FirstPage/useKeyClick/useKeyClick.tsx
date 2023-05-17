@@ -32,12 +32,17 @@ const keyboard = (value: string, press?: () => void, release?: () => void) => {
   key.isUp = true;
   key.press = press;
   key.release = release;
+  let Interval: NodeJS.Timer | undefined;
   //The `downHandler`
   key.downHandler = (event) => {
     if (event.key === key.key) {
-      key.press?.();
       key.isDown = true;
       key.isUp = false;
+      if (!Interval) {
+        Interval = setInterval(() => {
+          key.press?.();
+        }, 16);
+      }
       event.preventDefault();
     }
   };
@@ -45,6 +50,8 @@ const keyboard = (value: string, press?: () => void, release?: () => void) => {
   key.upHandler = (event: KeyboardEvent) => {
     if (event.key === key.key) {
       if (key.isDown && key.release) key.release();
+      clearInterval(Interval);
+      Interval = undefined;
       key.isDown = false;
       key.isUp = true;
       event.preventDefault();
