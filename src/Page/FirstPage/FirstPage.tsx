@@ -1,4 +1,4 @@
-import { Container, Sprite, Text } from '@pixi/react';
+import { Container, Sprite, Text, useTick } from '@pixi/react';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Sprite as SpriteProps, TextStyle } from 'pixi.js';
 import './FirstPage.css';
@@ -7,8 +7,9 @@ import { v4 } from 'uuid';
 import { useHitCheck } from './useHitCheck/useHitCheck';
 import { sample } from 'lodash';
 import Bullets from './Bullets/Bullets';
+import useThrottle from '../../util/useThrottle';
 
-const speed = 7;
+const speed = 5;
 
 export const FirstPage = () => {
   const initKeys = useMemo(() => {
@@ -32,9 +33,13 @@ export const FirstPage = () => {
 
   const { isHit, vx, vy } = useHitCheck({ leader: catRef.current, target: targetRef.current });
 
+  const handleSpaceClick = useThrottle(() => {
+    bulletRef.current?.handleAddBullet();
+  }, 100);
+
   const handleMoveClick = (key: string) => {
     if (key === ' ') {
-      bulletRef.current?.handleAddBullet();
+      handleSpaceClick();
     } else {
       setCatPosition((tempPosition) => {
         if (key === 'a') {
@@ -82,6 +87,7 @@ export const FirstPage = () => {
     fontSize: 14,
     fill: 'white',
   });
+
   return (
     <>
       <Container>

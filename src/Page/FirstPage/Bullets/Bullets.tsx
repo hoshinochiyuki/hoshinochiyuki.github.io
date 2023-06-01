@@ -35,12 +35,12 @@ export const Bullets = (props: BulletsProps) => {
     setInterval(() => {
       setBullets((newBullets) => {
         newBullets.forEach((e) => {
-          e.y = e.y - 10;
+          e.y = e.y - 15;
         });
         return newBullets.filter((e) => e.y > 10);
       });
       setRefresh(v4());
-    }, 100);
+    }, 50);
   }, []);
 
   return (
@@ -49,7 +49,7 @@ export const Bullets = (props: BulletsProps) => {
         {bullets.map((e) => (
           <Sprite
             key={e.key}
-            image="https://pixijs.io/pixi-react/img/bunny.png"
+            image="https://pixijs.io/pixi-react/img/coin.png"
             x={e.x}
             y={e.y}
             anchor={{ x: 0.5, y: 0.5 }}
