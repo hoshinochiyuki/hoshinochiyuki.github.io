@@ -52,6 +52,8 @@ export const Bullets = (props: BulletsProps) => {
             image="https://pixijs.io/pixi-react/img/coin.png"
             x={e.x}
             y={e.y}
+            width={5}
+            height={5}
             anchor={{ x: 0.5, y: 0.5 }}
           />
         ))}
