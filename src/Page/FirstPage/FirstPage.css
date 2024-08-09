@@ -1,9 +1,0 @@
-.circle1 {
-  position: relative;
-  width: 110px;
-  height: 110px;
-  border-radius: 100%;
-  background-color: #eee;
-  background-image: linear-gradient(90deg, transparent 50%, #16a085 50%),
-    linear-gradient(90deg, #eee 50%, transparent 50%);
-}
