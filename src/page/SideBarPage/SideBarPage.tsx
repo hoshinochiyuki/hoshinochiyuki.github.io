@@ -7,8 +7,7 @@ import {
   LayoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  SplitCellsOutlined,
-  UploadOutlined
+  SplitCellsOutlined
 } from '@ant-design/icons';
 
 import { twMerge } from 'tailwind-merge';
@@ -59,15 +58,10 @@ const SideBarPage: React.FC = () => {
               label: 'D&D'
             },
             {
-              key: 'throttleResizeObserver',
+              key: 'debounce',
               icon: <SplitCellsOutlined />,
               onClick: () => navigate('resizeObserver'),
-              label: 'ThrottleResizeObserver'
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3'
+              label: 'Debounce'
             }
           ]}
         />

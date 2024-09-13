@@ -8,7 +8,7 @@ interface UseResizeObserverProps extends PropsWithChildren {
   delay?: number;
 }
 
-const ThrottleResizeObserver: FC<UseResizeObserverProps> = (props) => {
+const DebounceResizeObserver: FC<UseResizeObserverProps> = (props) => {
   const { children, callBackFn, delay } = props;
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -31,4 +31,4 @@ const ThrottleResizeObserver: FC<UseResizeObserverProps> = (props) => {
   return <div ref={elementRef}>{children}</div>;
 };
 
-export default ThrottleResizeObserver;
+export default DebounceResizeObserver;

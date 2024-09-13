@@ -1,12 +1,18 @@
 import { useState } from 'react';
 
-import { InputNumber } from 'antd';
+import { Input, InputNumber } from 'antd';
 
-import ThrottleResizeObserver from './ThrottleResizeObserver';
+import ThrottleResizeObserver from './DebounceResizeObserver';
+import useDebounceChange from './useDebounceChange';
 
 const ResizeObserverPage = () => {
   const [width, setWidth] = useState<number>();
-  const [delay, setDelay] = useState<number>(300);
+  const [delay, setDelay] = useState<number>(500);
+  const [value, setValue] = useState<string>();
+
+  const onChange = useDebounceChange((e: string) => {
+    setValue(e);
+  }, delay);
 
   return (
     <div>
@@ -26,6 +32,19 @@ const ResizeObserverPage = () => {
           <span>{'<-'}</span>
           {width}
           <span>{'->'}</span>
+        </div>
+        <div className='mt-8 ml-4'>
+          <div className='w-full mb-2'>
+            <div>DebounceChange:</div>
+            <Input
+              onChange={(e) => onChange(e.target.value)}
+              className='w-[300px]'
+            />
+          </div>
+          <div className='w-full'>
+            <div>value:</div>
+            <Input readOnly value={value} className='w-[300px]' />
+          </div>
         </div>
       </ThrottleResizeObserver>
     </div>
