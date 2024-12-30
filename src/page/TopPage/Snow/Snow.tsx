@@ -1,6 +1,6 @@
-import { FC, RefObject, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
-import { random, round, times } from 'lodash-es';
+import { random, times } from 'lodash-es';
 import { twMerge } from 'tailwind-merge';
 
 import SnowSvg from '../../../assets/snow.svg';
