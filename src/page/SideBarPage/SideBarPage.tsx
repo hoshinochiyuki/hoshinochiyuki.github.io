@@ -27,10 +27,7 @@ const SideBarPage: React.FC = () => {
         width={220}
       >
         <div
-          className={twMerge(
-            'mt-4',
-            collapsed ? 'text-center mr-[6px]' : 'text-right'
-          )}
+          className={twMerge('mt-4', collapsed ? 'text-center' : 'text-right')}
         >
           <Button
             type='text'
@@ -49,7 +46,6 @@ const SideBarPage: React.FC = () => {
           theme='dark'
           mode='inline'
           defaultSelectedKeys={['1']}
-          className='[&_.ant-menu-item]:!pl-4'
           items={[
             {
               key: 'dnd',

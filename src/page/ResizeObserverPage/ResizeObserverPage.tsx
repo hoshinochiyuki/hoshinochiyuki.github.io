@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Input, InputNumber } from 'antd';
 
-import ThrottleResizeObserver from './DebounceResizeObserver';
+import DebounceResizeObserver from './DebounceResizeObserver';
 import useDebounceChange from './useDebounceChange';
 
 const ResizeObserverPage = () => {
@@ -27,7 +27,7 @@ const ResizeObserverPage = () => {
           onChange={(e) => setDelay(e ?? 0)}
         />
       </div>
-      <ThrottleResizeObserver callBackFn={(e) => setWidth(e)} delay={delay}>
+      <DebounceResizeObserver callBackFn={(e) => setWidth(e)} delay={delay}>
         <div className='pt-16 text-center h-full text-xl border-b flex justify-between'>
           <span>{'<-'}</span>
           {width}
@@ -46,7 +46,7 @@ const ResizeObserverPage = () => {
             <Input readOnly value={value} className='w-[300px]' />
           </div>
         </div>
-      </ThrottleResizeObserver>
+      </DebounceResizeObserver>
     </div>
   );
 };

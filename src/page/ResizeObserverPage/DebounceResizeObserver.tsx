@@ -6,10 +6,11 @@ import ResizeObserver from 'resize-observer-polyfill';
 interface UseResizeObserverProps extends PropsWithChildren {
   callBackFn: (width: number) => void;
   delay?: number;
+  className?: string;
 }
 
 const DebounceResizeObserver: FC<UseResizeObserverProps> = (props) => {
-  const { children, callBackFn, delay } = props;
+  const { children, callBackFn, delay, className } = props;
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,7 +29,11 @@ const DebounceResizeObserver: FC<UseResizeObserverProps> = (props) => {
     };
   }, [delay]);
 
-  return <div ref={elementRef}>{children}</div>;
+  return (
+    <div className={className} ref={elementRef}>
+      {children}
+    </div>
+  );
 };
 
 export default DebounceResizeObserver;
